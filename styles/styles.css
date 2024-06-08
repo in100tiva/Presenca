@@ -1,0 +1,114 @@
+body {
+    background-color: #2c2c2c;
+    color: #f1c40f;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #e67e22;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label, input, select, button {
+    margin: 5px 0;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+button {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #444;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.attendance-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: not-allowed;
+    background-color: #555;
+    color: #999;
+}
+
+button.attendance-btn.active {
+    cursor: pointer;
+    background-color: #e67e22;
+    color: #fff;
+}
+
+button.attendance-btn.present {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+button.attendance-btn.absent {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+button.delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+button#generateReportButton {
+    margin-top: 20px;
+    background-color: #3498db;
+    color: #fff;
+}
+
+button#generateReportButton:hover {
+    background-color: #2980b9;
+}

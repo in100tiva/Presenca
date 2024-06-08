@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento do Super Módulo</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="moduleTitle">Gerenciamento do Super Módulo</h1>
+        <div id="studentForm">
+            <h2>Cadastrar Aluno</h2>
+            <form>
+                <label for="studentName">Nome do Aluno:</label>
+                <input type="text" id="studentName" required>
+                <button type="button" id="addStudentButton">Cadastrar Aluno</button>
+            </form>
+        </div>
+        <div id="dateSelection">
+            <h2>Selecione uma Data</h2>
+            <select id="dateSelect"></select>
+            <button type="button" id="checkClassButton">Verificar Aula</button>
+            <p id="classMessage"></p>
+        </div>
+        <div id="studentsList">
+            <h2>Alunos Cadastrados</h2>
+            <ul id="students"></ul>
+        </div>
+        <button type="button" id="generateReportButton">Gerar Relatório</button>
+    </div>
+    <script src="../scripts/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Presenças</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Presenças</h1>
+        <div id="superModuleForm">
+            <h2>Cadastrar Super Módulo</h2>
+            <form>
+                <label for="moduleName">Nome do Super Módulo:</label>
+                <input type="text" id="moduleName" required>
+                <label for="startDate">Data de Início:</label>
+                <input type="date" id="startDate" required>
+                <label for="classDays">Dias das Aulas:</label>
+                <select id="classDays" multiple required>
+                    <option value="Monday">Segunda-feira</option>
+                    <option value="Tuesday">Terça-feira</option>
+                    <option value="Wednesday">Quarta-feira</option>
+                    <option value="Thursday">Quinta-feira</option>
+                    <option value="Friday">Sexta-feira</option>
+                </select>
+                <label for="startTime">Hora de Início das Aulas:</label>
+                <input type="time" id="startTime" required>
+                <button type="button" id="addSuperModuleButton">Cadastrar Super Módulo</button>
+            </form>
+        </div>
+        <div id="superModulesList">
+            <h2>Super Módulos Cadastrados</h2>
+            <ul id="modules"></ul>
+        </div>
+    </div>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
