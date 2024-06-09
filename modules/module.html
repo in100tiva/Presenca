@@ -23,12 +23,27 @@
             <button type="button" id="checkClassButton">Verificar Aula</button>
             <p id="classMessage"></p>
         </div>
-        <div id="studentsList">
-            <h2>Alunos Cadastrados</h2>
-            <ul id="students"></ul>
+        <div class="students-container">
+            <div id="studentsList">
+                <h2>Alunos Cadastrados</h2>
+                <ul id="students"></ul>
+            </div>
         </div>
         <button type="button" id="generateReportButton">Gerar Relatório</button>
     </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Tem certeza que deseja excluir este aluno?</p>
+            <div class="modal-buttons">
+                <button class="confirm-btn" id="confirmDeleteButton">Excluir</button>
+                <button class="cancel-btn" id="cancelDeleteButton">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../scripts/module.js"></script>
 </body>
 </html>

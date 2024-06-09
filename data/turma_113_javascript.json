@@ -1,0 +1,29 @@
+{
+    "id": 1,
+    "name": "Turma 113 - Javascript",
+    "startDate": "2024-05-14",
+    "classDays": ["Sunday"],
+    "startTime": "13:00",
+    "students": [
+        {"id": 1, "name": "Caio Rolim Santiago", "attendance": {}},
+        {"id": 2, "name": "Carlos Anderson Frota da Rocha", "attendance": {}},
+        {"id": 3, "name": "Daniel Elias do Nascimento Mendes", "attendance": {}},
+        {"id": 4, "name": "Davi Saboia Araújo Rodrigues", "attendance": {}},
+        {"id": 5, "name": "Diego Rodrigues Tavares", "attendance": {}},
+        {"id": 6, "name": "Emanoel de Jesus Alcantara Filho", "attendance": {}},
+        {"id": 7, "name": "Eugênio Boudaher Rocha", "attendance": {}},
+        {"id": 8, "name": "Francisco Costa da Silva Junior", "attendance": {}},
+        {"id": 9, "name": "Francisco José Magalhães de Sousa", "attendance": {}},
+        {"id": 10, "name": "Jose Aroldo Teixeira Sobrinho", "attendance": {}},
+        {"id": 11, "name": "Juvenal da Costa Lavres da Conceição", "attendance": {}},
+        {"id": 12, "name": "Lucas Barroso Sá", "attendance": {}},
+        {"id": 13, "name": "Lucas Gonçalves da Silva", "attendance": {}},
+        {"id": 14, "name": "Maria Izabele Lima", "attendance": {}},
+        {"id": 15, "name": "Matheus Batista Marques", "attendance": {}},
+        {"id": 16, "name": "Rafael Pereira Barros", "attendance": {}},
+        {"id": 17, "name": "Renato Freitas Barbosa Nunes", "attendance": {}},
+        {"id": 18, "name": "Ruben Alves Lima Lobão", "attendance": {}},
+        {"id": 19, "name": "Sergio Almeida Solero", "attendance": {}},
+        {"id": 20, "name": "Valderlenia Lopes Ferreira", "attendance": {}}
+    ]
+}

@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkClassButton = document.getElementById('checkClassButton');
     const classMessage = document.getElementById('classMessage');
     const generateReportButton = document.getElementById('generateReportButton');
+    const deleteModal = document.getElementById('deleteModal');
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    const cancelDeleteButton = document.getElementById('cancelDeleteButton');
+    const closeSpan = document.querySelector('.close');
+    let deleteStudentId = null;
 
     // Function to add a new student
     function addStudent() {
@@ -46,16 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.innerHTML = `
                 ${student.name}
-                <button class="attendance-btn" id="present-${student.id}" disabled>Presença</button>
-                <button class="attendance-btn" id="absent-${student.id}" disabled>Falta</button>
-                <button class="delete-btn" onclick="deleteStudent(${student.id})">Excluir</button>
+                <div class="button-group">
+                    <button class="attendance-btn" id="present-${student.id}" disabled>Presença</button>
+                    <button class="attendance-btn" id="absent-${student.id}" disabled>Falta</button>
+                    <button class="delete-btn" onclick="openDeleteModal(${student.id})"></button>
+                </div>
             `;
             studentsList.appendChild(li);
         });
     }
 
+    // Function to open delete modal
+    window.openDeleteModal = function(studentId) {
+        deleteStudentId = studentId;
+        deleteModal.style.display = 'block';
+    }
+
+    // Function to close delete modal
+    function closeDeleteModal() {
+        deleteModal.style.display = 'none';
+        deleteStudentId = null;
+    }
+
     // Function to delete a student
-    window.deleteStudent = function(studentId) {
+    function deleteStudent() {
         // Retrieve the module ID from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const moduleId = parseInt(urlParams.get('id'), 10);
@@ -65,9 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const module = superModules.find(mod => mod.id === moduleId);
 
         // Remove student from module
-        module.students = module.students.filter(student => student.id !== studentId);
+        module.students = module.students.filter(student => student.id !== deleteStudentId);
         localStorage.setItem('superModules', JSON.stringify(superModules));
         displayStudents(module.students);
+
+        // Close modal
+        closeDeleteModal();
     }
 
     // Function to load dates for the last 7 days
@@ -86,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to check if there is a class on the selected date
     function checkClass() {
         const selectedDate = new Date(dateSelect.value);
-        const dayOfWeek = selectedDate.toLocaleDateString('en-US', { weekday: 'long' });
+        const dayOfWeek = selectedDate.getUTCDay(); // Use getUTCDay() to avoid timezone issues
 
         // Retrieve the module ID from the URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -96,7 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let superModules = JSON.parse(localStorage.getItem('superModules')) || [];
         const module = superModules.find(mod => mod.id === moduleId);
 
-        if (module.classDays.includes(dayOfWeek)) {
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        if (module.classDays.includes(dayNames[dayOfWeek])) {
             classMessage.textContent = `Há aula no dia ${selectedDate.toLocaleDateString('pt-BR')}.`;
             toggleAttendanceButtons(true);
         } else {
@@ -199,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reportWindow.document.write('</style>');
         reportWindow.document.write('</head><body>');
         reportWindow.document.write(`<h1>Relatório de Presença - ${module.name}</h1>`);
-        reportWindow.document.write(`<p>Data: ${new Date(selectedDate).toLocaleDateString('pt-BR')}</p>`);
+        reportWindow.document.write(`<p>Data: ${new Date(selectedDate).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</p>`);
         reportWindow.document.write('<table>');
         reportWindow.document.write('<tr><th>Nome do Aluno</th><th>Presença</th></tr>');
         module.students.forEach(student => {
@@ -227,4 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
     addStudentButton.addEventListener('click', addStudent);
     checkClassButton.addEventListener('click', checkClass);
     generateReportButton.addEventListener('click', generateReport);
+
+    // Modal event listeners
+    confirmDeleteButton.addEventListener('click', deleteStudent);
+    cancelDeleteButton.addEventListener('click', closeDeleteModal);
+    closeSpan.addEventListener('click', closeDeleteModal);
+
+    window.addEventListener('click', (event) => {
+        if (event.target == deleteModal) {
+            closeDeleteModal();
+        }
+    });
 });

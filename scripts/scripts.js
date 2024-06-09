@@ -6,6 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load data from LocalStorage
     let superModules = JSON.parse(localStorage.getItem('superModules')) || [];
 
+    // Load permanent class from JSON file
+    fetch('data/turma_113_javascript.json')
+        .then(response => response.json())
+        .then(data => {
+            // Check if the class is already loaded
+            const isClassLoaded = superModules.some(module => module.id === data.id);
+            if (!isClassLoaded) {
+                superModules.push(data);
+                localStorage.setItem('superModules', JSON.stringify(superModules));
+            }
+            displaySuperModules();
+        })
+        .catch(error => console.error('Error loading the JSON file:', error));
+
     // Function to display super modules
     function displaySuperModules() {
         modulesList.innerHTML = '';
